@@ -1,7 +1,7 @@
-sum = 0
+summ = 0
 while a := int(input()):
-    if sum <= 21 and a > 0:
-        sum += a
+    if summ <= 21 and a > 0:
+        summ += a
     else:
         break
-print(sum if sum>21 else a)
+print(summ if summ>21 else a)
