@@ -1,0 +1,5 @@
+:deg a b a**b
+deg 2 10
+:abs x abs(x)+1
+abs -4
+quit "{}:{}"
