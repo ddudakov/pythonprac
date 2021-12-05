@@ -1,0 +1,19 @@
+@objcount
+class C:
+    pass
+    
+a, b, c = C(), C(), C()
+print(C.counter)
+d, e, f = a, b, c
+print(C.counter)
+del c
+print(C.counter)
+del f
+print(C.counter)
+del e
+del b
+del a
+print(C.counter)
+del d
+print(C.counter)
+

@@ -1,0 +1,9 @@
+class C:
+    num=Num()
+
+print(C().num)
+c, d, e = C(), C(), C()
+c.num = "qwerqwer"
+d.num = 3
+e.num = "qazwsx"
+print((c.num + d.num) * e.num)

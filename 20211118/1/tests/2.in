@@ -1,0 +1,8 @@
+@objcount
+class C:
+    pass
+
+a = C()
+print(C.counter)
+del a
+print(C.counter)

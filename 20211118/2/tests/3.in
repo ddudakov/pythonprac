@@ -1,0 +1,12 @@
+class C(str):
+    num = Num()
+
+print(C().num)
+c, d = C("qwer"), C("qweqrqt")
+c.num = "qwertyu"
+d.num = [i for i in range(5)]
+print(c.num+d.num)
+c.num = 10890
+print(c.num+d.num)
+
+
