@@ -1,0 +1,14 @@
+class C(metaclass=dump):
+    def __init__(self, val, value):
+        self.val = val
+        self.value = value
+
+    def add(self, other, another=None, end = 0):
+        return self.val + other + (another or self.value) + end
+
+    def sub(self, other, another=None, end=0):
+        return self.val*10 - other - (another or self.value) - end
+
+c = C(10, 5)
+print(c.add(9, end = 8))
+print(c.sub(9,another=10, end = 7))
