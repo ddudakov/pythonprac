@@ -9,25 +9,21 @@ while True:
     gas += strng.count('.')
     if (first == strng): break
     H += 1
-W, H = H, W
-print('#' * (W+2))
-for i in range(H):
-    print('#', end='')
-    if gas - i * W <= 0:
-        print('~' * W, end='')
-    else:
-        print('.' * W, end='')
-    print('#')
-print('#' * (W+2))
+print('#' * (H+2))
+H_wtr = round(wtr/H)
+if H_wtr*H < wtr:
+    H_wtr += 1
+H_gas = W - H_wtr
+for i in range(H_gas):
+    print('#' + '.'*H + '#')
+for i in range(H_wtr):
+    print('#' + '~'*H + '#')
+print('#' * (H+2))
 
 summ = wtr + gas
-indent = max(wtr, gas)
-wpar = 1
-gpar = 1
-if gas < 10 and wtr >= 10:
-    gpar += 1
-elif wtr < 10 and gas >= 10:
-    wpar += 1
+mx = max(wtr, gas)
     
-print('.' * gas + ' ' * (indent - gas + gpar) + str(gas) + '/' + str(summ))
-print('~' * wtr + ' ' * (indent - wtr + wpar) + str(wtr) + '/' + str(summ))
+print(('.'*round(gas/mx*20)).ljust(20), end = ' ')
+print((str(gas) + '/' + str(summ)).rjust(len(str(mx)) + len(str(summ)) + 1))
+print(('~'*round(wtr/mx*20)).ljust(20), end = ' ')
+print((str(wtr) + '/' + str(summ)).rjust(len(str(mx)) + len(str(summ)) + 1))

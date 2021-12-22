@@ -1,0 +1,6 @@
+alp = Alpha(m=11, n=21, a=42)
+alp.g = "Hello!"
+print(alp)
+alq = AlphaQ(m=11, z=21, a=42)
+alq.g = "Hello!"
+print(alq)

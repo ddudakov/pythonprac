@@ -1,0 +1,10 @@
+class wat(metaclass=check):
+    A: str
+    B: int
+    C: tuple = [1, 2, 3]
+
+d = wat()
+print(d.check_annotations())
+d.A = 1
+print(d.check_annotations())
+

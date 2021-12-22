@@ -1,0 +1,6 @@
+alp = Alpha(a = 1, b = 2)
+alp.c = 3
+print(alp)
+alq = AlphaQ(a = 1, b = 2)
+alq.c = 3
+print(alq)

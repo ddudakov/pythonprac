@@ -1,0 +1,11 @@
+class C(metaclass=check):
+    A: int = "QQ"
+    B: str = "WW"
+
+c=C()
+print(c.check_annotations())
+c.A = "2"
+print(c.check_annotations())
+c.A=int(c.A)
+print(c.check_annotations())
+

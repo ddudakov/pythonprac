@@ -1,44 +1,20 @@
-import string
-import operator
-from collections import Counter
-
 W = int(input())
 text = ''
-while line := input():
-    text += line
-
-txt = ""
-for x in text.split(" "):
-    if x.isalpha():
-            txt += x + " "
-    else:
-        for p in string.punctuation:
-            if p in x:
-                x = x.replace(p, " ")
-        txt += x + " "
-
-words = txt.lower().split(" ")
-
-while "" in words:
-    words.remove("")
-
-res = ""
-for word in words:
+while line := input().lower().strip():
+    if line == '': break
+    for char in line:
+        if not (char.isalpha() or char.isspace()):
+            line = line.replace(char, ' ')
+    text += line + ' '
+text = text.split()
+dct = {}
+mx = 0
+for word in text:
     if len(word) == W:
-        res += word + " "
-
-cnt = Counter(res.split(" "))
-
-sorted_tuples = sorted(cnt.items(), key=operator.itemgetter(1))[::-1]
-mx = sorted_tuples[0][1]
-
-j = 0
-ans = ''
-while sorted_tuples[j][1] == mx:
-    ans += sorted_tuples[j][0] + " "
-    j += 1
-ans = sorted(ans.split(" "))
-
-ans.remove("")
-
-print(' '.join(ans))
+        dct.setdefault(word, 0)
+        dct[word] += 1
+        if dct[word] > mx:
+            mx = dct[word]
+for k in sorted(dct.keys()):
+    if dct[k] == mx:
+        print(k, end = ' ')

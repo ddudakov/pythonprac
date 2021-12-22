@@ -1,7 +1,9 @@
+a = int(input())
 summ = 0
-while a := int(input()):
-    if summ <= 21 and a > 0:
-        summ += a
-    else:
+while a > 0:
+    summ += a
+    if summ > 21:
+        print(summ)
         break
-print(summ if summ>21 else a)
+    a = int(input())
+else: print(a)
