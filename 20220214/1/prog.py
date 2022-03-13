@@ -21,6 +21,26 @@ def viewtree(tid, shtcnt):
 			print(SHIFT * shtcnt + f"{tname.decode()}")
 			viewtree(num, shtcnt + 1)
 
+def viewhist(cid):
+	commit_dir, commit_file = cid[:2], cid[2:]
+	obj = ''
+	with open(f'.git/objects/{commit_dir}/{commit_file}/', 'rb') as cf:
+		obj = zlib.decompress(cf.read())
+	objtext = obj.decode()
+	print(objtext)
+	_, objtxt = objtext.split('tree ')
+	isInitial = False
+	if 'parent' in objtext:
+		nametree, parent = objtxt.split('\nparent ')
+		parentID = parent.split()[0]
+	else:
+		isInitial = True
+		nametree, _ = objtext_.split('\nauthor')
+	print('tree', nametree)
+	viewtree(nametree, 1)
+	print('-' * 80)
+	if not isInitial:
+		viewhist(parentID)
 
 if len(sys.argv) == 1:
 	for dr in iglob('.git/refs/heads/*'):
@@ -30,18 +50,6 @@ else:
 	commit_name = ''
 	with open(f'.git/refs/heads/{branch}/') as bp:
 		commit_name = bp.readline().strip()
-	commit_dir, commit_file = commit_name[:2], commit_name[2:]
-	obj = ''
-	with open(f'.git/objects/{commit_dir}/{commit_name_file}/', 'rb') as cf:
-		obj = zlib.decompress(cf.read())
-	objtext = obj.decode()
-	print(objtext)
-	_, objtxt = objtext.split('tree ')
 
-	if 'parent' in objtext:
-		nametree, _ = objtxt.split('\nparent')
-	else:
-		nametree, _ = objtxt.split('\nauthor')
-	print('tree', nametree)
-	viewtree(nametree, 1)
+	viewhist(commit_name)
 
