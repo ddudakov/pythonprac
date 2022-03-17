@@ -1,7 +1,12 @@
 import textdistance
 
 def dist(s1, s2, typ):
-	return textdistance.levenshtein(s1, s2)
+	if typ == "L":
+		return textdistance.levenshtein(s1, s2)
+	elif typ == "D":
+		return textdistance.damerau_levenshtein(s1, s2)
+	else:
+		return -1
 
 str1 = input()
 str2 = input()
