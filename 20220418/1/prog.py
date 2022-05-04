@@ -1,4 +1,4 @@
-def squareq(a, b, c):
+def solveSquare(a, b, c):
     assert a != 0
     d = b * b - 4 * a * c
     if d < 0:
